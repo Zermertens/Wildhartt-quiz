@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.getElementById("result-text").innerHTML = descriptions[profile];
 
-      const url = new URL("https://script.google.com/macros/s/AKfycbz26QyMqYPYsfyI9szsAzf4Zq659UuvC5-GL1yq9qMoszcx2FdW0LXXJKqKLnXIOdrV/exec");
+      const url = new URL("https://script.google.com/macros/s/AKfycbxaGmpq3wKDdEQ3zbkPcSdFthRDLGltzhz5j8idbJGeI-UR53e8lhkW8lw5_qwy9RGX/exec");
 
       url.searchParams.append("first_name", firstName);
       url.searchParams.append("last_name", lastName);
