@@ -95,22 +95,24 @@ function goToNextStep() {
 
 document.getElementById("result-text").innerHTML = descriptions[profile];
 
-    // Envoi vers Google Sheets (si script Apps Script activé)
-    fetch("https://script.google.com/macros/s/AKfycbyL4XLrMzP2o5mEnUBI6fxbZ5gr56jRJTK5cDuKnpSHfEuvzt3CwziqUChyk-vjMasL/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        profile: profile,
-        optin: document.getElementById("optin").checked ? "Oui" : "Non",
-        timestamp: new Date().toISOString()
-      })
-    }).then(res => res.json())
-      .then(data => console.log("Données envoyées :", data))
-      .catch(err => console.error("Erreur d'envoi :", err));
-  }
+    const url = new URL("https://script.google.com/macros/s/AKfycbz26QyMqYPYsfyI9szsAzf4Zq659UuvC5-GL1yq9qMoszcx2FdW0LXXJKqKLnXIOdrV/exec"); // Remplace par ton URL !
+
+url.searchParams.append("first_name", firstName);
+url.searchParams.append("last_name", lastName);
+url.searchParams.append("email", email);
+url.searchParams.append("optin", document.getElementById("optin").checked ? "Oui" : "Non");
+
+fetch(url)
+  .then(response => response.text())
+  .then(data => {
+    console.log("Réponse du serveur :", data);
+    // Tu peux afficher un message de succès ici
+  })
+  .catch(error => {
+    console.error("Erreur lors de l'envoi :", error);
+    // Tu peux afficher un message d’erreur ici
+  });
+
 
   // Passe à l'étape suivante
   currentStep++;
@@ -134,34 +136,3 @@ if (currentStep === 7) {
 document.querySelectorAll(".next").forEach(btn => {
   btn.addEventListener("click", goToNextStep);
 });
-function doPost(e) {
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST',
-    'Access-Control-Allow-Headers': 'Content-Type'
-  };
-
-  // Si tu veux juste log les données reçues
-  const data = JSON.parse(e.postData.contents);
-  Logger.log(data);
-
-  const output = {
-    status: "success",
-    message: "Data received"
-  };
-
-  return ContentService
-    .createTextOutput(JSON.stringify(output))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeaders(headers);
-}
-function doOptions(e) {
-  return ContentService
-    .createTextOutput("")
-    .setMimeType(ContentService.MimeType.TEXT)
-    .setHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type'
-    });
-}
