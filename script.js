@@ -96,7 +96,7 @@ function goToNextStep() {
 document.getElementById("result-text").innerHTML = descriptions[profile];
 
     // Envoi vers Google Sheets (si script Apps Script activé)
-    fetch("https://script.google.com/macros/s/AKfycbxGE4H7NIV2TpkbQa9CSOnXV-onWI1x6qUm-1v9n-g5BaK9j4uWSTGkXrg-Uz2-rfwr/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyL4XLrMzP2o5mEnUBI6fxbZ5gr56jRJTK5cDuKnpSHfEuvzt3CwziqUChyk-vjMasL/exec", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -134,3 +134,34 @@ if (currentStep === 7) {
 document.querySelectorAll(".next").forEach(btn => {
   btn.addEventListener("click", goToNextStep);
 });
+function doPost(e) {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST',
+    'Access-Control-Allow-Headers': 'Content-Type'
+  };
+
+  // Si tu veux juste log les données reçues
+  const data = JSON.parse(e.postData.contents);
+  Logger.log(data);
+
+  const output = {
+    status: "success",
+    message: "Data received"
+  };
+
+  return ContentService
+    .createTextOutput(JSON.stringify(output))
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeaders(headers);
+}
+function doOptions(e) {
+  return ContentService
+    .createTextOutput("")
+    .setMimeType(ContentService.MimeType.TEXT)
+    .setHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type'
+    });
+}
