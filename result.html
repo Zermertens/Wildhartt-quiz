@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ton profil Wildhartt</title>
+</head>
+<body>
+  <h1 id="profile-title"></h1>
+  <p id="profile-text"></p>
+  <a href="https://www.wildhartt.com/expeditions">Découvrir nos expéditions</a>
+<script src="descriptions.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const profile = params.get("profile");
+
+    document.getElementById("profile-title").textContent = `Ton profil : ${profile}`;
+
+document.getElementById("result-text").innerHTML = descriptions[profile];
+  </script>
+</body>
+</html>

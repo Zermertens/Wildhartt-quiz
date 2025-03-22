@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Wildhartt</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <!-- Étape 0 : Page d’accueil (en dehors du formulaire) -->
+  <div class="quiz-step active" id="step-0">
+    <div class="intro-screen">
+      <img src="static/logo-wildhartt.png" alt="Wildhartt logo" class="logo">
+      <h1>Envie d’aventure ?</h1>
+      <h3 class="vintage-flicker">*La vraie aventure</h3>
+      <p><B>Tente de gagner un buff et une expé Wildhartt !</B> <br>5 questions pour découvrir ton profil d’aventurier(e): t'es plutôt face nord de l'Eiger ou rando pépère ?</p>
+      <button type="button" class="button start quiz-btn">Je tente ma chance</button>
+    </div>
+  </div>
+
+  <!-- Formulaire caché au départ -->
+  <div id="step-counter" class="step-counter">Étape 1 / 7</div>
+  <form id="quiz-form" class="card" style="display: none;">
+
+    <!-- Étape 1 -->
+    <div class="quiz-step active" id="step-1">
+      <h2>Quel est ton week-end idéal :</h2>
+      <div class="answer-options" data-question="q1">
+        <button type="button" data-value="1">Une rando tranquille, un bon gîte et une fondue dégoulinante</button>
+        <button type="button" data-value="2">Tente au bord d’un lac avec lever de soleil sur les sommets</button>
+        <button type="button" data-value="3">Une face nord, de la glace et des mollets qui piquent</button>
+      </div>
+      <button type="button" class="button next quiz-btn">Suivant</button>
+    </div>
+
+    <!-- Étape 2 -->
+    <div class="quiz-step" id="step-2">
+      <h2>Bivouac sous les étoiles :</h2>
+      <div class="answer-options" data-question="q2">
+        <button type="button" data-value="1">Jamais tenté… mais ça me fait rêver</button>
+        <button type="button" data-value="2">Déjà fait, j’adore</button>
+        <button type="button" data-value="3">Je dors mieux dehors que dedans</button>
+        <button type="button" data-value="1">Tu veux dire… sans douche ?</button>
+      </div>
+      <button type="button" class="button next quiz-btn">Suivant</button>
+    </div>
+
+    <!-- Étape 3 -->
+    <div class="quiz-step" id="step-3">
+      <h2>Tu préfères quelle ambiance pour une aventure ?</h2>
+      <div class="answer-options" data-question="q3">
+        <button type="button" data-value="1">Contemplation, silence et paysages à couper le souffle</button>
+        <button type="button" data-value="2">Rando en groupe avec bonne bouffe et fous rires</button>
+        <button type="button" data-value="3">Un glacier, crampons aux pieds, et des sommets à conquérir</button>
+        <button type="button" data-value="1">Une bonne sieste en refuge avec un vin chaud, ça compte ?</button>
+      </div>
+      <button type="button" class="button next quiz-btn">Suivant</button>
+    </div>
+
+    <!-- Étape 4 -->
+    <div class="quiz-step" id="step-4">
+      <h2>Ton sac à dos, c’est plutôt…</h2>
+      <div class="answer-options" data-question="q4">
+        <button type="button" data-value="1">Un sac de ville avec une banane et une bouteille d’eau</button>
+        <button type="button" data-value="2">40L prêt à partir en micro-aventure</button>
+        <button type="button" data-value="3">70L compressé au millimètre pour l’autonomie</button>
+        <button type="button" data-value="1">Quelqu’un peut me le porter ?</button>
+      </div>
+      <button type="button" class="button next quiz-btn">Suivant</button>
+    </div>
+
+    <!-- Étape 5 -->
+    <div class="quiz-step" id="step-5">
+      <h2>Pour toi, l’aventure, c’est :</h2>
+      <div class="answer-options" data-question="q5">
+        <button type="button" data-value="1">Sortir de ma zone de confort (mais pas trop loin)</button>
+        <button type="button" data-value="2">Découvrir de nouveaux terrains de jeu, toujours plus sauvages</button>
+        <button type="button" data-value="3">Me dépasser physiquement et mentalement, dans un cadre fou</button>
+        <button type="button" data-value="1">Le bar du refuge après l’effort</button>
+      </div>
+      <button type="button" class="button next quiz-btn">Suivant</button>
+    </div>
+
+    <!-- Étape 6 : Formulaire -->
+    <div class="quiz-step" id="step-6">
+      <h2>C'est presque fini !</h2>
+      <h4>As-tu gagné un buff Wildhartt ? Découvre le juste après !</h4>
+      <div class="question-box">
+        <label>Prénom : <input type="text" id="first_name" required></label><br>
+        <label>Nom : <input type="text" id="last_name" required></label><br>
+        <label>Email : <input type="email" id="email" required></label><br>
+        <label class="checkbox-text"><input type="checkbox" id="optin" checked> Je participe au concours et je veux recevoir les bons plans Wildhartt.</label>
+      </div>
+      <button type="button" class="button next quiz-btn">Voir mon profil</button>
+    </div>
+
+    <!-- Étape 7 : Résultat -->
+    <div class="quiz-step" id="step-7">
+      <h2>Ton profil d’aventurier(e) Wildhartt</h2>
+      <div id="final-buff-message" class="buff-message"></div>
+      <div class="question-box">
+        <h3>Ton niveau</h3>
+        <p id="result-text"></p>
+      </div>
+      <br>
+<a href="https://www.instagram.com/wildhartt_eu/" target="_blank" rel="noopener noreferrer" class="button end-button quiz-btn" id="expeditions-link">
+  <img src="static/instagram.png" alt="Logo Instagram" class="insta">
+  Nous suivre sur Instagram
+</a>
+    </div>
+
+  </form>
+<script src="descriptions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

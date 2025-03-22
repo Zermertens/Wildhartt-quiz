@@ -1,0 +1,266 @@
+/* Wildhartt Style Guide */
+
+/* Global styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fefded;
+    color: #303d3c;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+p{
+  line-height: 1.6; /* Augmente l’interligne */
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #303d3c;
+    margin-bottom: 0.2rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: 0.2rem;
+}
+h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+/* Boutons */
+.button {
+    background-color: #303d3C;
+    color: #fefded;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #303d3c;
+}
+
+.button:focus {
+  outline: none;
+}
+
+/* Formulaire de quiz */
+#quiz-form {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background: #fefded;
+  border-radius: 40px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Enlever le cadre autour des questions et réponses */
+.quiz-step {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fefded;
+  border-radius: 20px;
+  border: none;
+}
+
+/* Réduction de l'espacement entre boutons de réponse */
+.answer-options {
+  display: flex;
+  flex-direction: column;
+  gap: 7px; /* Espacement réduit */
+  max-width: 500px;
+  margin: auto;
+}
+
+/* Style des boutons de réponse */
+.answer-options button {
+  width: 100%;
+  max-width: 480px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fefded;
+  color: #303d3c;
+  font-size: 15px;
+  font-weight: medium;
+  text-align: left; /* Aligner le texte à droite */
+  border: 1px solid #303d3c;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.answer-options button:hover,
+.answer-options button.selected {
+  background: #303d3c;
+  color: #fefded;
+  border-color: #303d3c;
+}
+
+/* Plus d’espace entre les boutons de réponses et le bouton Suivant */
+.answer-options {
+  margin-bottom: 10px;
+}
+
+.question-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alignement à gauche */
+  width: 100%;
+  max-width: 500px; /* Taille uniforme des champs */
+  margin: auto;
+}
+
+/* Espacement des champs du formulaire */
+.question-box label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px; /* Espacement entre le label et l’input */
+  width: 80%;
+}
+
+/* Style des champs du formulaire */
+.question-box input[type="text"],
+.question-box input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  background: #fefded;
+  border: 1px solid #303d3c; /* Outline vert */
+  border-radius: 15px; /* Angles arrondis */
+  font-size: 16px;
+  color: #303d3c;
+  margin-bottom:5px;
+}
+
+/* Centrer et espacer le texte */
+h2 {
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+.quiz-step {
+  display: none; /* Cache toutes les étapes par défaut */
+}
+
+.quiz-step.active {
+  display: block; /* Affiche uniquement l’étape active */
+}
+/* Style du logo */
+.logo {
+  width: 150px; /* Taille du logo */
+  display: block;
+  margin: 0 auto 20px; /* Centré et espace en bas */
+}
+.button.start {
+  margin-top: 20px; /* Ajoute un espace au-dessus du bouton */
+}
+.vintage-flicker {
+  display: inline-block;
+  animation: flicker 1.5s ease-in-out 0s 2;
+}
+
+/* Animation du scintillement */
+@keyframes flicker {
+  20%, 18%, 22%, 50%, 100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  30% {
+    opacity: 0.9;
+    transform: translate(-1px, 1px);
+  }
+  64% {
+    opacity: 0.85;
+    transform: translate(1px, -1px);
+  }
+  85% {
+    opacity: 0.92;
+    transform: translate(-1px, 0px);
+  }
+}
+.checkbox-text {
+  font-weight: 200; /* Texte léger (normal) */
+  line-height: 1.4;
+  font-size: 12px;
+}
+.end-button {
+    background-color: #ff9441;
+    margin-left: 0px; /* Ajuste selon ce que tu veux */
+}
+.buff-message {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #ff9441;
+  background-color: #fefded;
+  color: #303d3c;
+  font-weight: bold;
+  text-align: center;
+  display: none; /* caché par défaut */
+}
+h4 {
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  font-weight: normal;
+}
+.step-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #303d3c;
+  color: #fefded;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  opacity: 0.9;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+}
+@media (max-width: 600px) {
+  .quiz-btn {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+  }
+  .end-button {
+    display: flex;
+    background-color: #ff9441;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    padding: 12px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .insta {
+    width: 20px;
+    height: 20px;
+  }
+}
+.insta {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.quiz-btn {
+  display: block;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+  width: 100%;
+}
