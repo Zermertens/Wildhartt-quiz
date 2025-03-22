@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 const steps = document.querySelectorAll(".quiz-step");
 let currentStep = 0;
 const answers = {};
@@ -135,4 +136,5 @@ if (currentStep === 7) {
 // Attache les boutons "Suivant" à l'action
 document.querySelectorAll(".next").forEach(btn => {
   btn.addEventListener("click", goToNextStep);
+});
 });
