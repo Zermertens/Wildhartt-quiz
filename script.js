@@ -94,15 +94,27 @@ document.addEventListener("DOMContentLoaded", () => {
       if (average <= 1.6) profile = "Marmotte de combat";
       else if (average <= 2.3) profile = "Chamois des Montagnes";
       else profile = "Panthère des neiges";
+let level = 1;
+
+if (profile === "Marmotte de combat") {
+  level = 1;
+} else if (profile === "Chamois des Montagnes") {
+  level = 2;
+} else if (profile === "Panthère des neiges") {
+  // Tu peux choisir d’envoyer 3 ou 4, ici je mets 3 par défaut
+  level = 3;
+}
 
       document.getElementById("result-text").innerHTML = descriptions[profile];
 
-      const url = new URL("https://script.google.com/macros/s/AKfycbxaGmpq3wKDdEQ3zbkPcSdFthRDLGltzhz5j8idbJGeI-UR53e8lhkW8lw5_qwy9RGX/exec");
+      const url = new URL("https://script.google.com/macros/s/AKfycbxZajKbTF5mFxUk_8C7jdhGl2AVGgLDyVnJhtEBywCGvoOD95cMpxb9bnNxfUMeCgPS/exec");
 
       url.searchParams.append("first_name", firstName);
       url.searchParams.append("last_name", lastName);
       url.searchParams.append("email", email);
       url.searchParams.append("optin", document.getElementById("optin").checked ? "Oui" : "Non");
+      url.searchParams.append("profile", profile);
+      url.searchParams.append("level", level); // 👈 Ajout du niveau
 
       fetch(url)
         .then(response => response.text())
